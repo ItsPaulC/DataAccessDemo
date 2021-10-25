@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessDemo.Data", "DataAccessDemo.Data\DataAccessDemo.Data.csproj", "{16359787-5218-40EF-84F1-8334550BE6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessDemo.Tests", "DataAccessDemo.Tests\DataAccessDemo.Tests.csproj", "{C1E691FB-FB6E-4EA8-A802-5581A770D106}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{FE9DD900-47B1-4889-A20D-EF624BC80243}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionItems\postgres-compose.yml = SolutionItems\postgres-compose.yml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{16359787-5218-40EF-84F1-8334550BE6B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16359787-5218-40EF-84F1-8334550BE6B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16359787-5218-40EF-84F1-8334550BE6B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16359787-5218-40EF-84F1-8334550BE6B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1E691FB-FB6E-4EA8-A802-5581A770D106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1E691FB-FB6E-4EA8-A802-5581A770D106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1E691FB-FB6E-4EA8-A802-5581A770D106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1E691FB-FB6E-4EA8-A802-5581A770D106}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,45 @@
+version: '3.5'
+#after running for the first time execute the sql below to install plv8 to your database
+# CREATE EXTENSION plv8;
+
+#verify that the installation woirkd with line below.
+# SELECT plv8_version();
+
+# http://localhost:5050/
+services:
+  postgres:
+    container_name: postgresV8_container
+    image: clkao/postgres-plv8:9.6
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-admin}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-admin}
+      PGDATA: /data/pg
+    volumes:
+       - postgres:/data/pg
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres
+    restart: unless-stopped
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@admin.com}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    volumes:
+       - pgadmin:/root/.pgadmin
+    ports:
+      - "${PGADMIN_PORT:-5050}:80"
+    networks:
+      - postgres
+    restart: unless-stopped
+
+networks:
+  postgres:
+    driver: bridge
+
+volumes:
+    postgres:
+    pgadmin:
