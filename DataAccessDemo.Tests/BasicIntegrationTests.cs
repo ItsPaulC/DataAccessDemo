@@ -16,7 +16,7 @@ namespace DataAccessDemo.Tests
         }
 
         [Fact]
-        public void CreateDeleteAndVerifyTheRepo()
+        public void CreateDeleteAndVerifyTheCompanyRepo()
         {
             try
             {
@@ -52,5 +52,45 @@ namespace DataAccessDemo.Tests
                 throw;
             }
         }
+        
+        [Fact]
+        public void CreateDeleteAndVerifyTheStudentRepo()
+        {
+            try
+            {
+                //create an instance of the repo
+                var repo = new StudentRepo();
+                
+                Guid theId = Guid.NewGuid();
+                
+                //create a object to save
+                var student = new Student
+                {
+                    Id = theId,
+                    Name = "Billy",
+                    Age = 10
+                };
+            
+                //save the object
+                repo.Save(student);
+                
+                //Load the object to make sure it saved
+                var studentFromGet = repo.Get(theId);
+                Assert.Equal("Billy",studentFromGet.Name);
+                Assert.Equal(10, student.Age);
+                
+                //delete the object
+                repo.Delete(theId);
+                
+                var studentToVerifyDelete = repo.Get(theId);
+                Assert.Null(studentToVerifyDelete);
+            }
+            catch (Exception e)
+            {
+                _testOutputHelper.WriteLine(e.ToString());
+                throw;
+            }
+        }
+        
     }
 }
