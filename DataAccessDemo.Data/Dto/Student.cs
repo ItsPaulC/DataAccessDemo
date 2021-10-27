@@ -9,6 +9,8 @@ namespace DataAccessDemo.Data.Dto
         public string Name { get; set; }
         
         public int Age { get; set; }
+
+        public Enums.Sex Sex { get; set; }
         
     }
 }
