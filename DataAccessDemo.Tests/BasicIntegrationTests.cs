@@ -107,15 +107,37 @@ namespace DataAccessDemo.Tests
             Assert.Equal(5, allStudents.Count());
             Assert.Equal(3, allGirlStudents.Count());
             Assert.Equal(2, allBoyStudents.Count());
-            
+
             //do this instead of a Console.WriteLine
             _testOutputHelper.WriteLine($"allStudents has {allStudents.Count()} students in the collection");
             _testOutputHelper.WriteLine($"allGirlStudents has {allGirlStudents.Count()} students in the collection");
             _testOutputHelper.WriteLine($"allBoyStudents has {allBoyStudents.Count()} students in the collection");
         }
+
+        [Fact]
+        public void UseFakeRepoMore()
+        {
+            var repo = new FakeStudentRepo();
+            IEnumerable<Student> students = repo.GetAllStudents();
+
+            //we now have a list of students from the repo. now lets query the IEnumerable.
+
+            IEnumerable<Student> under17 = students.Where(student => student.Age < 17);
+            IEnumerable<Student> studentsWithS = students.Where(s => s.Name.StartsWith("S"));
+            
+            _testOutputHelper.WriteLine("Here are the students that are under 17:");
+            foreach (var student in under17)
+            {
+                _testOutputHelper.WriteLine(student.Name);
+            }
+            
+            _testOutputHelper.WriteLine("Here are the students that have names that start with 's'");
+            foreach (var student in studentsWithS)
+            {
+                _testOutputHelper.WriteLine(student.Name);
+            }
+        }
     }
 
     #endregion Fake Repo Tests
 }
-
-
