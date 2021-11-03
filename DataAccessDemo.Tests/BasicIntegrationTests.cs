@@ -168,7 +168,7 @@ namespace DataAccessDemo.Tests
             int lowerAgeFromUserInput = 10;
             int upperAgeFromUserInput = 15;
             
-            IEnumerable<Student> studentsAge10To15 = repo.GetStudents10Thru15(10, 15);
+            IEnumerable<Student> studentsAge10To15 = repo.GetStudents10Thru15(lowerAgeFromUserInput, upperAgeFromUserInput);
             
             
             //Now we reuse the integer values to write out your message. Out string output now used
@@ -178,7 +178,6 @@ namespace DataAccessDemo.Tests
 
             foreach (var student in studentsAge10To15)
             {
-                _testOutputHelper.WriteLine(student.Name);
                 _testOutputHelper.WriteLine(student.Name);
             }
         }
