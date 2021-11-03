@@ -52,6 +52,11 @@ namespace DataAccessDemo.Data
             //         break;
             // }
         }
+
+        public IEnumerable<Student> GetStudents10Thru15(int lowerAge, int upperAge)
+        {
+            return _students.Where(x => x.Age is <= 15 and >= 10);
+        }
         
         
     }

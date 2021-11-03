@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using DataAccessDemo.Data;
 using DataAccessDemo.Data.Dto;
 using Xunit;
@@ -144,7 +145,7 @@ namespace DataAccessDemo.Tests
             var repo = new FakeStudentRepo();
 
             IEnumerable<Student> students = repo.GetAllStudents();
-
+            
             IEnumerable<Student> studentsBetween10And15 = students.Where(s => s.Age is <= 15 and >= 10);
 
             _testOutputHelper.WriteLine("Here are the students between ages 10 and 15:");
@@ -153,6 +154,23 @@ namespace DataAccessDemo.Tests
             {
                 _testOutputHelper.WriteLine(student.Name);
             }
+        }
+
+        [Fact]
+        public void BetweenFunctionUsingArgs()
+        {
+            var repo = new FakeStudentRepo();
+
+            IEnumerable<Student> students = repo.GetAllStudents();
+
+            IEnumerable<Student> studentsAge10To15 = repo.GetStudents10Thru15(10, 15);
+            
+                _testOutputHelper.WriteLine("Here are the students between ages 10 and 15:");
+
+                foreach (var student in studentsAge10To15)
+                {
+                    _testOutputHelper.WriteLine(student.Name);
+                }
         }
     }
 }
