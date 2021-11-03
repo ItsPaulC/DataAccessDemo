@@ -124,20 +124,40 @@ namespace DataAccessDemo.Tests
 
             IEnumerable<Student> under17 = students.Where(student => student.Age < 17);
             IEnumerable<Student> studentsWithS = students.Where(s => s.Name.StartsWith("S"));
-            
+
             _testOutputHelper.WriteLine("Here are the students that are under 17:");
             foreach (var student in under17)
             {
                 _testOutputHelper.WriteLine(student.Name);
             }
-            
+
             _testOutputHelper.WriteLine("Here are the students that have names that start with 's'");
             foreach (var student in studentsWithS)
             {
                 _testOutputHelper.WriteLine(student.Name);
             }
         }
-    }
 
-    #endregion Fake Repo Tests
+        [Fact]
+        public void BetweenFunction()
+        {
+            var repo = new FakeStudentRepo();
+
+            IEnumerable<Student> students = repo.GetAllStudents();
+
+            IEnumerable<Student> studentsBetween10And15 = students.Where(s => s.Age is <= 15 and >= 10);
+
+            _testOutputHelper.WriteLine("Here are the students between ages 10 and 15:");
+
+            foreach (var student in studentsBetween10And15)
+            {
+                _testOutputHelper.WriteLine(student.Name);
+            }
+        }
+    }
 }
+
+
+
+#endregion Fake Repo Tests
+
