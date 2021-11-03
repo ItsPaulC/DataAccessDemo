@@ -55,9 +55,9 @@ namespace DataAccessDemo.Data
 
         public IEnumerable<Student> GetStudents10Thru15(int lowerAge, int upperAge)
         {
-            return _students.Where(x => x.Age is <= 15 and >= 10);
+            // return _students.Where(x => x.Age is <= 15 and >= 10);// this is what you had
+            // return _students.Where(x => x.Age is <= upperAge and >= lowerAge); this is what i thought you could do but it won't work with pattern matching.
+            return _students.Where(x => x.Age <= upperAge && x.Age >= lowerAge); // this is what you have to do.
         }
-        
-        
     }
 }
