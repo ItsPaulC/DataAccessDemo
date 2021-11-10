@@ -65,7 +65,7 @@ namespace DataAccessDemo.Data
                throw new NotImplementedException();
            }
 
-           if (upperAge is <= lowerAge) //similar issue as before.. expects a constant.
+           if (upperAge <= lowerAge) //similar issue as before.. expects a constant.
            {
                throw new NotImplementedException();
            }
