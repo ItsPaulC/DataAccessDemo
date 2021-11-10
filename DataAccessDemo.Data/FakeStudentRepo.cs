@@ -55,6 +55,21 @@ namespace DataAccessDemo.Data
 
         public IEnumerable<Student> GetStudents10Thru15(int lowerAge, int upperAge)
         {
+           if (lowerAge is <= 4 or >= 22)
+           {
+               throw new NotImplementedException(); //I know this is not the correct error message
+           }
+           
+           if (upperAge is <= 4 or >= 22)
+           {
+               throw new NotImplementedException();
+           }
+
+           if (upperAge is <= lowerAge) //similar issue as before.. expects a constant.
+           {
+               throw new NotImplementedException();
+           }
+           
             // return _students.Where(x => x.Age is <= 15 and >= 10);// this is what you had
             // return _students.Where(x => x.Age is <= upperAge and >= lowerAge); this is what i thought you could do but it won't work with pattern matching.
             return _students.Where(x => x.Age <= upperAge && x.Age >= lowerAge); // this is what you have to do.

@@ -165,7 +165,7 @@ namespace DataAccessDemo.Tests
 
             //for the purpose of the test lets pretend that the lower and upper ages were input
             //into a form by a user. we take the values from the form and put them into integers:
-            int lowerAgeFromUserInput = 10;
+            int lowerAgeFromUserInput = 10; //when I change this value to 3, an exception occurs... which is what is supposed to happen.
             int upperAgeFromUserInput = 15;
             
             IEnumerable<Student> studentsAge10To15 = repo.GetStudents10Thru15(lowerAgeFromUserInput, upperAgeFromUserInput);
@@ -174,6 +174,7 @@ namespace DataAccessDemo.Tests
             //Now we reuse the integer values to write out your message. Out string output now used
             //the same values that it passed to the function so it will be accurate.
             //another way to say this is... your message is dynaminc; based on the user input:
+            
             _testOutputHelper.WriteLine($"Here are the students between ages {lowerAgeFromUserInput} and {upperAgeFromUserInput}:");
 
             foreach (var student in studentsAge10To15)
