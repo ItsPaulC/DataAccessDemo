@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using DataAccessDemo.Data.Dto;
 using Marten;
 using Marten.NodaTime;
@@ -27,7 +29,10 @@ namespace DataAccessDemo.Data
         {
             using IDocumentSession session = _documentStore.OpenSession();
 
-            var student = session.Load<Student>(studentId);
+            Student student = session.Load<Student>(studentId);
+            
+          //  List<Student> allStudents = session.Query<Student>().ToList();
+          //  List<Student> males = session.Query<Student>().Where(x=>x.Sex==Enums.Sex.Male).ToList();
             return student;
         }
         

@@ -57,17 +57,17 @@ namespace DataAccessDemo.Data
         {
            if (lowerAge is <= 4 or >= 22)
            {
-               throw new NotImplementedException(); //I know this is not the correct error message
+               throw new FriendlyException(); 
            }
            
            if (upperAge is <= 4 or >= 22)
            {
-               throw new NotImplementedException();
+               throw new ApplicationException();
            }
 
            if (upperAge <= lowerAge) //similar issue as before.. expects a constant.
            {
-               throw new NotImplementedException();
+               throw new ApplicationException();
            }
            
             // return _students.Where(x => x.Age is <= 15 and >= 10);// this is what you had
