@@ -57,7 +57,7 @@ namespace DataAccessDemo.Data
         {
            if (lowerAge is <= 4 or >= 22)
            {
-               throw new FriendlyException(); 
+               throw new ApplicationException();
            }
            
            if (upperAge is <= 4 or >= 22)

@@ -17,6 +17,12 @@ namespace DataAccessDemo.Data
             _documentStore = GetDocumentStore();
         }
 
+        //This is a destructor (DTOR) it fires once when the object is destroyed
+        ~StudentRepo()
+        {
+            _documentStore.Dispose();
+        }
+
         public void Save(Student studentToSave)
         {
             using IDocumentSession session = _documentStore.OpenSession();

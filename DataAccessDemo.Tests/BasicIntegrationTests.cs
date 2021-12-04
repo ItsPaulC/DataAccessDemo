@@ -145,7 +145,7 @@ namespace DataAccessDemo.Tests
             var repo = new FakeStudentRepo();
 
             IEnumerable<Student> students = repo.GetAllStudents();
-            
+
             IEnumerable<Student> studentsBetween10And15 = students.Where(s => s.Age is <= 15 and >= 10);
 
             _testOutputHelper.WriteLine("Here are the students between ages 10 and 15:");
@@ -167,14 +167,14 @@ namespace DataAccessDemo.Tests
             //into a form by a user. we take the values from the form and put them into integers:
             int lowerAgeFromUserInput = 10; //when I change this value to 3, an exception occurs... which is what is supposed to happen.
             int upperAgeFromUserInput = 15;
-            
+
             IEnumerable<Student> studentsAge10To15 = repo.GetStudents10Thru15(lowerAgeFromUserInput, upperAgeFromUserInput);
-            
-            
+
+
             //Now we reuse the integer values to write out your message. Out string output now used
             //the same values that it passed to the function so it will be accurate.
             //another way to say this is... your message is dynaminc; based on the user input:
-            
+
             _testOutputHelper.WriteLine($"Here are the students between ages {lowerAgeFromUserInput} and {upperAgeFromUserInput}:");
 
             foreach (var student in studentsAge10To15)
@@ -186,93 +186,85 @@ namespace DataAccessDemo.Tests
 
         /// ///////////////// ///////////////// //////////////
 
-       // public  enum Belts
-       //  {
-       //      White,
-       //      Blue,
-       //      Purple,
-       //      Brown,
-       //      Black
-       //  }
-       //
-       //  public void DoThingsByBelt(Belts belts)
-       //  {
-       //      switch (belts)
-       //      {
-       //          case Belts.White:
-       //              //white belt code
-       //              break;
-       //          case Belts.Blue:
-       //              break;
-       //          case Belts.Purple:
-       //              break;
-       //          case Belts.Brown:
-       //              break;
-       //          case Belts.Black:
-       //              break;
-       //          default:
-       //              throw new ArgumentOutOfRangeException(nameof(belts), belts, null);
-       //      }
-       //  }
-       //
-       //  public void DoThingsByBelt(string belts)
-       //  {
-       //      if (string.IsNullOrWhiteSpace(belts))
-       //      {
-       //          if (belts.ToLower().Trim() == "white")
-       //          {
-       //              
-       //          }
-       //      }
-       //  }
+        // public  enum Belts
+        //  {
+        //      White,
+        //      Blue,
+        //      Purple,
+        //      Brown,
+        //      Black
+        //  }
+        //
+        //  public void DoThingsByBelt(Belts belts)
+        //  {
+        //      switch (belts)
+        //      {
+        //          case Belts.White:
+        //              //white belt code
+        //              break;
+        //          case Belts.Blue:
+        //              break;
+        //          case Belts.Purple:
+        //              break;
+        //          case Belts.Brown:
+        //              break;
+        //          case Belts.Black:
+        //              break;
+        //          default:
+        //              throw new ArgumentOutOfRangeException(nameof(belts), belts, null);
+        //      }
+        //  }
+        //
+        //  public void DoThingsByBelt(string belts)
+        //  {
+        //      if (string.IsNullOrWhiteSpace(belts))
+        //      {
+        //          if (belts.ToLower().Trim() == "white")
+        //          {
+        //              
+        //          }
+        //      }
+        //  }
 
-       /// ///////////////// ///////////////// //////////////
+        /// ///////////////// ///////////////// //////////////
 
-
-
-
-
-       // [Fact]
-       // public void CreateAndSaveStudents()
-       // {;
-       //     var repo = new StudentRepo();
-       //
-       //     var studentlist = new List<Student>
-       //     {
-       //         new Student {Age = 15, Name = "Katie", Sex = Enums.Sex.Female},
-       //         new Student {Age = 10, Name = "Lucy", Sex = Enums.Sex.Female},
-       //         new Student {Age = 13, Name = "Billy", Sex = Enums.Sex.Male},
-       //         new Student {Age = 16, Name = "Alex", Sex = Enums.Sex.Male},
-       //         new Student {Age = 15, Name = "Sally", Sex = Enums.Sex.Female}
-       //     };   
-       //     
-       //
-       //     foreach (var Student in studentlist)
-       //     {
-       //         repo.Save(Student);
-       //     }
-       // }
-        [Fact]
-       public void GetStudentsFromDatabase()
-       {
-           var repo = new StudentRepo();
-
-           //Load the object to make sure it saved
-           var studentsFromGet = repo.Get(Guid.Empty);
-           
-           IEnumerable<Student> studentsFromDatabase = repo.Get();
-           
-           foreach (var student in studentsFromDatabase)
-           {
-               _testOutputHelper.WriteLine(student.Name);
-           }
-
-       }
+        // [Fact]
+        // public void CreateAndSaveStudents()
+        // {;
+        //     var repo = new StudentRepo();
+        //
+        //     var studentlist = new List<Student>
+        //     {
+        //         new Student {Age = 15, Name = "Katie", Sex = Enums.Sex.Female},
+        //         new Student {Age = 10, Name = "Lucy", Sex = Enums.Sex.Female},
+        //         new Student {Age = 13, Name = "Billy", Sex = Enums.Sex.Male},
+        //         new Student {Age = 16, Name = "Alex", Sex = Enums.Sex.Male},
+        //         new Student {Age = 15, Name = "Sally", Sex = Enums.Sex.Female}
+        //     };   
+        //     
+        //
+        //     foreach (var Student in studentlist)
+        //     {
+        //         repo.Save(Student);
+        //     }
+        // }
         
+        [Fact]
+        public void GetAllStudentsFromDatabase()
+        {
+            // var repo = new StudentRepo();
+            //
+            // //Load the object to make sure it saved
+            // var studentsFromGet = repo.Get(Guid.Empty);
+            //
+            // IEnumerable<Student> studentsFromDatabase = repo.Get();
+            //
+            // foreach (var student in studentsFromDatabase)
+            // {
+            //     _testOutputHelper.WriteLine(student.Name);
+            // }
+        }
     }
 }
 
-
-
 #endregion Fake Repo Tests
-
