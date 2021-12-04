@@ -186,72 +186,89 @@ namespace DataAccessDemo.Tests
 
         /// ///////////////// ///////////////// //////////////
 
-       public  enum Belts
-        {
-            White,
-            Blue,
-            Purple,
-            Brown,
-            Black
-        }
+       // public  enum Belts
+       //  {
+       //      White,
+       //      Blue,
+       //      Purple,
+       //      Brown,
+       //      Black
+       //  }
+       //
+       //  public void DoThingsByBelt(Belts belts)
+       //  {
+       //      switch (belts)
+       //      {
+       //          case Belts.White:
+       //              //white belt code
+       //              break;
+       //          case Belts.Blue:
+       //              break;
+       //          case Belts.Purple:
+       //              break;
+       //          case Belts.Brown:
+       //              break;
+       //          case Belts.Black:
+       //              break;
+       //          default:
+       //              throw new ArgumentOutOfRangeException(nameof(belts), belts, null);
+       //      }
+       //  }
+       //
+       //  public void DoThingsByBelt(string belts)
+       //  {
+       //      if (string.IsNullOrWhiteSpace(belts))
+       //      {
+       //          if (belts.ToLower().Trim() == "white")
+       //          {
+       //              
+       //          }
+       //      }
+       //  }
 
-        public void DoThingsByBelt(Belts belts)
-        {
-            switch (belts)
-            {
-                case Belts.White:
-                    //white belt code
-                    break;
-                case Belts.Blue:
-                    break;
-                case Belts.Purple:
-                    break;
-                case Belts.Brown:
-                    break;
-                case Belts.Black:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(belts), belts, null);
-            }
-        }
+       /// ///////////////// ///////////////// //////////////
 
-        public void DoThingsByBelt(string belts)
-        {
-            if (string.IsNullOrWhiteSpace(belts))
-            {
-                if (belts.ToLower().Trim() == "white")
-                {
-                    
-                }
-            }
-        }
+
+
+
+
+       // [Fact]
+       // public void CreateAndSaveStudents()
+       // {;
+       //     var repo = new StudentRepo();
+       //
+       //     var studentlist = new List<Student>
+       //     {
+       //         new Student {Age = 15, Name = "Katie", Sex = Enums.Sex.Female},
+       //         new Student {Age = 10, Name = "Lucy", Sex = Enums.Sex.Female},
+       //         new Student {Age = 13, Name = "Billy", Sex = Enums.Sex.Male},
+       //         new Student {Age = 16, Name = "Alex", Sex = Enums.Sex.Male},
+       //         new Student {Age = 15, Name = "Sally", Sex = Enums.Sex.Female}
+       //     };   
+       //     
+       //
+       //     foreach (var Student in studentlist)
+       //     {
+       //         repo.Save(Student);
+       //     }
+       // }
+        [Fact]
+       public void GetStudentsFromDatabase()
+       {
+           var repo = new StudentRepo();
+
+           //Load the object to make sure it saved
+           var studentsFromGet = repo.Get(Guid.Empty);
+           
+           IEnumerable<Student> studentsFromDatabase = repo.Get();
+           
+           foreach (var student in studentsFromDatabase)
+           {
+               _testOutputHelper.WriteLine(student.Name);
+           }
+
+       }
         
-        /// ///////////////// ///////////////// //////////////
-        
-        
-        
-        
-        
-        // [Fact]
-        // public void CreateAndSaveStudents()
-        // {;
-        //     var repo = new StudentRepo();
-        //
-        //     var studentlist = new List<Student>
-        //     {
-        //         new Student {Age = 15, Name = "Katie", Sex = Enums.Sex.Female},
-        //         new Student {Age = 10, Name = "Lucy", Sex = Enums.Sex.Female},
-        //         new Student {Age = 13, Name = "Billy", Sex = Enums.Sex.Male},
-        //         new Student {Age = 16, Name = "Alex", Sex = Enums.Sex.Male},
-        //         new Student {Age = 15, Name = "Sally", Sex = Enums.Sex.Female}
-        //     };   
-        //     
-        //
-        //     foreach (var Student in studentlist)
-        //     {
-        //         repo.Save(Student);
-        //     }
-        // }
     }
 }
 
